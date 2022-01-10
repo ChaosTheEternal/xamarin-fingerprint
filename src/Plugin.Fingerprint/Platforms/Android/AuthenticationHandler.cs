@@ -46,6 +46,10 @@ namespace Plugin.Fingerprint
             {
                 result.Status = FingerprintAuthenticationResultStatus.TooManyAttempts;
             }
+            else if (errorCode == BiometricPrompt.ErrorCanceled || errorCode == BiometricPrompt.ErrorUserCanceled || errorCode == BiometricPrompt.ErrorNegativeButton)
+            {
+                result.Status = FingerprintAuthenticationResultStatus.Canceled;
+            }
 
             SetResultSafe(result);
         }
